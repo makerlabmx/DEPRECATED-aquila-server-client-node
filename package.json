@@ -1,0 +1,28 @@
+{
+  "name": "aquilaServer",
+  "version": "0.0.1",
+  "author": "Rodrigo Mendez",
+  "private": true,
+  "scripts": {
+    "test": "grunt",
+    "start": "node exampleServer"
+  },
+  "main": "./aquilaserver",
+  "dependencies": {
+    "aquilalib": "git+https://github.com/makerlabmx/aquilalib-node.git",
+    "express": "~3.*.*",
+    "socket.io": "*",
+    "ejs": "*"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-cli": "*",
+    "browserify-buffertools": "*",
+    "browserify": "*",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-browserify": "~2.1.1"
+  },
+  "browser": {
+    "buffertools": "browserify-buffertools"
+  }
+}

@@ -1,0 +1,22 @@
+<html lang="es">
+<head>
+	<title>Aquila</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/aquilaClient.standalone.js"></script>
+	<script type="text/javascript">
+	$(document).on("ready", function()
+		{
+			$("#button").on("click", function()
+			{
+				Aq().action(2);
+			});
+		});
+	
+	</script>
+</head>
+<body>
+	<h1>Aquila</h1>
+	<button id="button"> Push Me </button>
+</body>
+</html>
