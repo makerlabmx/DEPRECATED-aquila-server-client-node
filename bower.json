@@ -1,0 +1,22 @@
+{
+  "name": "aquilaClient",
+  "version": "0.1",
+  "homepage": "https://github.com/makerlabmx/aquilaServerClient-node",
+  "authors": [
+    "Javier Olan <javikin10@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.2.0",
+    "angular": "~1.2.18"
+  }
+}

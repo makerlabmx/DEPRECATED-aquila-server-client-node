@@ -1,22 +1,67 @@
-<html lang="es">
+<html lang="es" ng-app="aquila">
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Aquila</title>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="js/aquilaClient.standalone.js"></script>
-	<script type="text/javascript">
-	$(document).on("ready", function()
-		{
-			$("#button").on("click", function()
-			{
-				Aq().action(2);
-			});
-		});
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,700,100' rel='stylesheet' type='text/css'>
+	<link href="bowerc/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">	
 	
-	</script>
+
+	<link href="icons/capicon.css" rel="stylesheet" >
+	<link href="css/main.css" rel="stylesheet" >
+
+	
 </head>
-<body>
-	<h1>Aquila</h1>
-	<button id="button"> Push Me </button>
+<body ng-controller="MainController as main" >
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>Aquila {{main.test}}</h1>
+			</div>
+		</div>
+		<hr>
+		<div class="row" ng-show="!main.active" >
+			<div class='col-md-4 text-center item' ng-repeat="device in main.devices" >
+            	<a href='#'  ng-click='main.seeDevice(device.address)' >
+        			<i class='f120' ng-class="device.img" ></i>
+        		</a>
+        		<h2>{{device.name}}</h2>
+        	</div>
+		</div>
+		<div class="row" ng-show="main.active" >			
+			<div class='col-md-1 text-center'  >
+				<button type="button" class="btn btn-outlined btn-success" ng-click='main.seeAllDevices()' >Volver</button>
+        	</div>
+			<div class='col-md-3 text-center item'  >            	
+    			<i class='icon-075 f120'></i>
+    			<a href='#'>
+        			<i class='icon-006'></i>
+        		</a>        		
+        		<h2>{{main.device.name}}</h2>        		
+        	</div>
+			<div class='col-md-8 details' >
+        		<ul>
+        			<li ng-repeat="action in main.device.actions" >
+        				<p><a href="#" class="btn btn-outlined btn-primary" ng-click='main.doAction(main.device.address, action.n)'>{{action.name}}</a></p>        				
+        			</li>
+        		</ul>
+
+
+
+
+
+        	</div>
+		</div>
+	</div>	
+
+	<script src="bowerc/jquery/dist/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="bowerc/angular/angular.js"></script>
+	<script src="/socket.io/socket.io.js"></script>	
+	<script src="js/aquilaClient.standalone.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/factorys.js"></script>			
+	
 </body>
 </html>
