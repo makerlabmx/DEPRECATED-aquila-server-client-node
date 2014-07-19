@@ -2764,6 +2764,8 @@ socket = io.connect();
 socket.on("connect", function()
 {
 	console.log("Socket connected");
+	Aquila.update();
+	Aquila.manager.emit("ready");
 });
 socket.on("deviceAdded", function(devices)
 {

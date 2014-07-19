@@ -1,5 +1,5 @@
 var socket = require("socket.io");
-var Aq = require("aquilalib").Aq;
+var Aq = require("aquilaLib").Aq;
 
 var AquilaServer = function()
 {
