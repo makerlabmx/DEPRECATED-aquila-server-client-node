@@ -41,15 +41,15 @@ AquilaServer.prototype.listen = function(port, callback)
 
 		Aq.manager.on("deviceAdded", function()
 			{
-				socket.emit("deviceAdded", Aq.manager.devices);
+				socket.emit("deviceAdded", Aq.manager.getDevices());
 			});
 
 		Aq.manager.on("deviceRemoved", function()
 			{
-				socket.emit("deviceRemoved", Aq.manager.devices);
+				socket.emit("deviceRemoved", Aq.manager.getDevices());
 			});
 
-		socket.emit("deviceAdded", Aq.manager.devices);
+		socket.emit("deviceAdded", Aq.manager.getDevices());
 	});
 
 	return port;
