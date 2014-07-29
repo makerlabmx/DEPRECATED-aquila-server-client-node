@@ -2719,6 +2719,12 @@ AquilaDevices.prototype.action = function(action, param)
 	socket.emit("action", addresses, action, param);
 };
 
+AquilaDevices.prototype.setName = function(name)
+{
+	var addresses = this.getDeviceAddresses();
+	socket.emit("setName", addresses, name);
+};
+
 AquilaDevices.prototype.clearEntries = function(cb)
 {
 	var addresses = this.getDeviceAddresses();
@@ -2749,6 +2755,20 @@ var Aquila = function(query)
 };
 
 Aquila.manager = manager;
+
+// callback(pan)
+Aquila.setPAN = function(pan, callback)
+{
+	if(typeof(pan) === "number")
+	{
+		socket.emit("setPAN", pan, callback);
+	}
+};
+
+Aquila.getPAN = function(callback)
+{
+	socket.emit("getPAN", callback);
+};
 
 Aquila.update = function(callback)
 {
@@ -2853,6 +2873,8 @@ var deviceManagerClient = new DeviceManagerClient();
 module.exports = deviceManagerClient;
 }).call(this,_dereq_("buffer").Buffer)
 },{"./addressParser":10,"buffer":2,"buffertools":1,"events":5}],13:[function(_dereq_,module,exports){
+(function (Buffer){
+var addressParser = _dereq_("./addressParser");
 
 var Entry = function()
 {
@@ -2864,7 +2886,31 @@ var Entry = function()
 	this.param = 0;
 };
 
+Entry.prototype.fromBuffer = function(raw)
+{
+	// parse entry
+	this.hasParam = Boolean(raw.data[0]);
+	this.event = raw.data[1];
+	this.address = addressParser.toString(raw.data.slice(2, 10));
+	this.action = raw.data[10];
+	this.param = raw.data[11];
+};
+
+Entry.prototype.toBuffer = function()
+{
+	var buf = new Buffer(12);
+	buf[0] = Number(this.hasParam);
+	buf[1] = this.event;
+	var address = addressParser.toBuffer(this.address);
+	address.copy(buf, 2);
+	buf[10] = this.action;
+	buf[11] = this.param;
+
+	return buf;
+};
+
 module.exports = Entry;
-},{}]},{},[11])
+}).call(this,_dereq_("buffer").Buffer)
+},{"./addressParser":10,"buffer":2}]},{},[11])
 (11)
 });

@@ -32,6 +32,12 @@ AquilaDevices.prototype.action = function(action, param)
 	socket.emit("action", addresses, action, param);
 };
 
+AquilaDevices.prototype.setName = function(name)
+{
+	var addresses = this.getDeviceAddresses();
+	socket.emit("setName", addresses, name);
+};
+
 AquilaDevices.prototype.clearEntries = function(cb)
 {
 	var addresses = this.getDeviceAddresses();
@@ -62,6 +68,20 @@ var Aquila = function(query)
 };
 
 Aquila.manager = manager;
+
+// callback(pan)
+Aquila.setPAN = function(pan, callback)
+{
+	if(typeof(pan) === "number")
+	{
+		socket.emit("setPAN", pan, callback);
+	}
+};
+
+Aquila.getPAN = function(callback)
+{
+	socket.emit("getPAN", callback);
+};
 
 Aquila.update = function(callback)
 {

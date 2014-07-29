@@ -1,5 +1,6 @@
 var socket = require("socket.io");
 var Aq = require("aquilaLib").Aq;
+var Entry = require("aquilaLib").Entry;
 
 var AquilaServer = function()
 {
@@ -37,6 +38,75 @@ AquilaServer.prototype.listen = function(port, callback)
 		socket.on("action", function(addresses, action, param)
 			{
 				Aq(addresses).action(action, param);
+			});
+
+		socket.on("setName", function(addresses, name)
+			{
+				Aq(addresses).setName(name);
+			});
+
+		socket.on("setPAN", function(pan, callback)
+			{
+				Aq.setPAN(pan, callback);
+			});
+
+		socket.on("getPAN", function(callback)
+			{
+				Aq.getPAN(callback);
+			});
+
+		socket.on("update", function(callback)
+			{
+				Aq.update(callback);
+			});
+
+		socket.on("reload", function(callback)
+			{
+				Aq.reload(callback);
+			});
+
+		socket.on("clearEntries", function(addresses, cb)
+			{
+				console.log("clearEntries");
+				Aq(addresses).clearEntries(function()
+					{
+						socket.emit("deviceAdded", Aq.manager.getDevices());
+						cb();
+					});
+			});
+
+		socket.on("addEntry", function(addresses, entry, cb)
+			{
+				console.log("addEntry");
+				var localEntry = new Entry();
+				for (var attrname in entry) { localEntry[attrname] = entry[attrname]; }
+				Aq(addresses).addEntry(localEntry, function()
+					{
+						socket.emit("deviceAdded", Aq.manager.getDevices());
+						cb();
+					});
+			});
+
+		socket.on("removeEntry", function(addresses, entryN, cb)
+			{
+				console.log("removeEntry");
+				Aq(addresses).removeEntry(entryN, function()
+					{
+						socket.emit("deviceAdded", Aq.manager.getDevices());
+						cb();
+					});
+			});
+
+		socket.on("editEntry", function(addresses, entryN, entry, cb)
+			{
+				console.log("editEntry");
+				var localEntry = new Entry();
+				for (var attrname in entry) { localEntry[attrname] = entry[attrname]; }
+				Aq(addresses).editEntry(entryN, localEntry, function()
+					{
+						socket.emit("deviceAdded", Aq.manager.getDevices());
+						cb();
+					});
 			});
 
 		Aq.manager.on("deviceAdded", function()
