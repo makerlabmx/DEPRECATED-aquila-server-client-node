@@ -1,0 +1,58 @@
+
+
+
+<div ng-controller="InteraccionesController as inter" data-ng-init="inter.init()">
+
+<button type="button" class="btn btn-outlined btn-success" ng-click='inter.new()' >Agregar Interaccion</button>
+
+
+<br />
+Entries:
+<ul>
+	<li ng-repeat="entry in inter.entries"  >
+		
+		{{entry.cuando_name}}: {{entry.event_name}} >>
+		{{entry.hacer_name}}: {{entry.action_name}}
+		
+		<a class="type" href ng-click='inter.delete(entry)' >
+			delete
+        </a>    
+        <a class="type" href ng-click='inter.edit(entry)' >
+			edit
+        </a>    
+	</li>
+</ul>
+
+	<div class="row">
+		<div class="col-md-6">
+		<form novalidate class="simple-form">
+			<p>Nueva interaccion/Editar interacción</p>
+			<div class="row">
+			  <div class="col-md-6">Cuando:</div>
+			  <div class="col-md-6">Hacer:</div>
+			</div>
+			<div class="row">
+			  <div class="col-md-6">
+			  	<select ng-model="inter.interaccion.dev_cuando" ng-options="device.name for device in inter.devices"></select>
+			  </div>
+			  <div class="col-md-6">
+			  	<select ng-disabled="inter.edit_element" ng-model="inter.interaccion.dev_hacer" ng-options="device.name for device in inter.devices"></select>
+			  </div>
+			</div>
+			<div class="row">
+			  <div class="col-md-6">
+			  	<select ng-model="inter.interaccion.event_cuando" ng-options="action.name for action in inter.interaccion.dev_cuando.events"></select>
+			  </div>
+			  <div class="col-md-6">
+			  	<select ng-model="inter.interaccion.action_hacer" ng-options="action.name for action in inter.interaccion.dev_hacer.actions"></select>
+			  </div>
+			</div>
+			<button ng-show="inter.edit_element" ng-click="inter.update()">Actualizar</button>
+	    	<button ng-show="inter.save_element" ng-click="inter.save()">Guardar</button>
+		</form>
+		</div>
+	</div>
+  
+  
+  <pre>form = {{inter.interaccion | json}}</pre>  
+</div>
