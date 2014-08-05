@@ -28,7 +28,7 @@
 	            <div ng-show="device.show_options" >
 		            <div class="row" >
 			            <div class="col-sm-6 options" ng-repeat="action in device.actions" >
-		        			<a href class="btn btn-outlined btn-primary" ng-click='main.doAction(main.device.address, action.n)'>{{action.name}}</a>		
+		        			<a href class="btn btn-outlined btn-primary" ng-click='main.doAction(device.address, action.n)'>{{action.name}}</a>		
 		        		</div>	
 	        		</div>
 	        		<a class="type" href=''  ng-click='main.hideOptions(device)' >
