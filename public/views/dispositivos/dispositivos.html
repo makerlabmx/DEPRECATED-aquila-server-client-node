@@ -1,4 +1,4 @@
-<div ng-controller="MainController as main" data-ng-init="main.initMain()" >
+<div ng-controller="DeviceController as main" data-ng-init="main.initMain()" >
 	<div class="row" ng-hide="main.active" >
 		<!--
 		<div class="col-md-1" >
@@ -23,16 +23,20 @@
 	    	</div>
 	        <div class="item-action">
 	            <a class="type" href=''  ng-click='main.seeOptions(device)'  ng-hide="device.show_options" >
-	            	<i class='icon-286 f40'></i>
-	            </a>
+	            	<i class='icon-288 f40'></i>
+	            </a>	            
 	            <div ng-show="device.show_options" >
-		            <div class="row" >
-			            <div class="col-sm-6 options" ng-repeat="action in device.actions" >
-		        			<a href class="btn btn-outlined btn-primary" ng-click='main.doAction(device.address, action.n)'>{{action.name}}</a>		
-		        		</div>	
+		            <div class="row" ng-repeat="action in device.actions"  >
+			            <div class="col-sm-12 options" ng-init="action.range = 0" >
+		        			<a href class="btn btn-outlined btn-primary" ng-click='main.doAction(device.address, action.n)'>{{action.name}}</a>				        			
+		        		</div>			        		
+		        		<div class="col-sm-12 options" >
+		        			<input type="range" name="range" min="0" max="255" value="0" ng-model="action.range" ng-change="main.doSlider(device, action)" >
+    						<output id="range">{{action.range}}</output>
+		        		</div>			        		
 	        		</div>
 	        		<a class="type" href=''  ng-click='main.hideOptions(device)' >
-		            	<i class='icon-279 f40'></i>
+		            	<i class='icon-289 f40'></i>
 		            </a>	
 	            </div>	            
 	        </div>	            

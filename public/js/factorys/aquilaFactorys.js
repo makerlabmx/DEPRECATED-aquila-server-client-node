@@ -1,6 +1,6 @@
 (function(){
 
-var app = angular.module('factorys', []);
+var app = angular.module('aquilaFactorys', []);
 
 app.factory('$Aq', ['$rootScope', function ($rootScope) {
 
