@@ -10,7 +10,7 @@ Requiere un Altair programado como "bridge" para interfacear con la red Aquila.
 
 		git clone https://github.com/makerlabmx/aquila-server-client-node.git
 		
-3. Entra en la carpeta clonara e instala las dependencias
+3. Entra en la carpeta clonada e instala las dependencias
 
 		cd aquila-server-client-node
 		npm install
@@ -22,9 +22,9 @@ Requiere un Altair programado como "bridge" para interfacear con la red Aquila.
 5. Accede a la interfaz gráfica desde cualquier navegador, entrando a: 
 
 		Desde la misma máquina donde está corriendo el servidor:
-		[http://localhost:8080](http://localhost:8080)
+		http://localhost:8080
 		Desde otra máquina:
-		<ip del servodor>:8080
+		<ip del servidor>:8080
 
 # Aquila API
 
