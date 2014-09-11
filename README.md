@@ -1,3 +1,31 @@
+# Aquila Server
+
+Servidor de ejemplo que otorga una interfaz gráfica para controlar y configurar los dispositivos de la plataforma Aquila.
+Requiere un Altair programado como "bridge" para interfacear con la red Aquila.
+
+## Instalación
+
+1. Instala nodejs desde [http://nodejs.org](http://nodejs.org)
+2. Clona este repositorio
+
+		git clone https://github.com/makerlabmx/aquila-server-client-node.git
+		
+3. Entra en la carpeta clonara e instala las dependencias
+
+		cd aquila-server-client-node
+		npm install
+		
+4. Conecta el Altair programado como "bridge" e inicia el servidor:
+
+		node exampleServer.js
+		
+5. Accede a la interfaz gráfica desde cualquier navegador, entrando a: 
+
+		Desde la misma máquina donde está corriendo el servidor:
+		[http://localhost:8080](http://localhost:8080)
+		Desde otra máquina:
+		<ip del servodor>:8080
+
 # Aquila API
 
 Biblioteca estilo jQuery para el manejo de los dispositivos en la red Aquila.
