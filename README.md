@@ -17,7 +17,7 @@ Requiere un Altair programado como "bridge" para interfacear con la red Aquila.
 		
 4. Conecta el Altair programado como "bridge" e inicia el servidor:
 
-		node exampleServer.js
+		node server.js
 		
 5. Accede a la interfaz gráfica desde cualquier navegador, entrando a: 
 
