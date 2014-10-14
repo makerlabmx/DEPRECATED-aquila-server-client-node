@@ -5,7 +5,7 @@ Requiere un Altair programado como "bridge" para interfacear con la red Aquila.
 
 ## Instalación
 
-1. Instala nodejs desde [http://nodejs.org](http://nodejs.org)
+1. Instala los prerequisitos según tu sistema operativo: http://community.aquila.io/t/instalacion-de-software-hub-aquila-prerequisitos-para-windows-mac-osx-y-linux/43/1
 2. Clona este repositorio
 
 		git clone https://github.com/makerlabmx/aquila-server-client-node.git
