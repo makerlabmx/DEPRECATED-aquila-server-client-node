@@ -1,4 +1,6 @@
-# Aquila Server
+# [OBSOLETO] Aquila Server
+
+# ESTE SOFTWARE ES OBSOLETO, ha sido reemplazado por: [aquila-api-hub](https://github.com/makerlabmx/aquila-api-hub)
 
 Servidor de ejemplo que otorga una interfaz gráfica para controlar y configurar los dispositivos de la plataforma Aquila.
 Requiere un Altair programado como "bridge" para interfacear con la red Aquila.
